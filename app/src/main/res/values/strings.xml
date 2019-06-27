@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Coding Challenge</string>
+    <string name="gist_list_author_created_by">created by</string>
+</resources>
