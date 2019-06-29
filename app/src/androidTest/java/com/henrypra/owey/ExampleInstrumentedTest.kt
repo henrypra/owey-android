@@ -1,12 +1,9 @@
 package com.henrypra.owey
 
-import android.support.test.InstrumentationRegistry
-import android.support.test.runner.AndroidJUnit4
-
+import androidx.test.runner.AndroidJUnit4
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -18,7 +15,7 @@ class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
         // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.henrypra.codingchallenge", appContext.packageName)
+        val appContext = androidx.test.InstrumentationRegistry.getTargetContext()
+        assertEquals("de.verbraucherzentralenrw.fluggastrechte", appContext.packageName)
     }
 }
