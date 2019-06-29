@@ -3,7 +3,7 @@
 ## [1.0.0] (TODO)
 
 ### Added
-- Feature [#CD-1](https://henrypratsch.atlassian.net/browse/CD-1) Toolbar
+- Feature Login Screen
 
 ### Fixed
 
