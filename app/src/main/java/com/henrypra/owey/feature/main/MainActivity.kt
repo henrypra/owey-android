@@ -13,7 +13,6 @@ class MainActivity : BaseActivity(),
         LoginActionListener {
 
     private val fragmentNavigation: FragmentNavigation by lazy { FragmentNavigation(R.id.main_fragment_container, this) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,5 +29,9 @@ class MainActivity : BaseActivity(),
         val mainFragment = MainFragment()
         mainFragment.presenter = MainPresenter(this, this, mainFragment)
         fragmentNavigation.replaceFragment(mainFragment)
+    }
+
+    override fun onLoginClicked() {
+        loadMainFragment()
     }
 }

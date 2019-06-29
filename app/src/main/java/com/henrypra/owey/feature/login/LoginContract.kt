@@ -5,7 +5,9 @@ import com.henrypra.owey.architecture.BaseView
 
 interface LoginContract {
 
-    interface Presenter : BasePresenter
+    interface Presenter : BasePresenter{
+        fun onLoginClicked()
+    }
 
     interface View : BaseView<Presenter>
 
