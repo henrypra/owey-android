@@ -1,4 +1,12 @@
 <resources>
-    <string name="app_name">Coding Challenge</string>
-    <string name="gist_list_author_created_by">created by</string>
+    <string name="app_name">owey!</string>
+
+    <!--Login Screen-->
+    <string name="app_login_hint">Please login to your account!"</string>
+    <string name="app_login_email_hint">Email</string>
+    <string name="app_login_password_hint">Password</string>
+    <string name="app_login_forgot_password">Forgot password?</string>
+    <string name="app_login_button_log_in">LOG IN</string>
+    <string name="app_login_sign_up_hint">Don\'t have an account? Sign up!</string>
+
 </resources>
