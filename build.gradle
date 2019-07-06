@@ -24,6 +24,8 @@ buildscript {
     ext.circleimage = "3.0.0"
     //Room
     ext.room = '2.1.0'
+    //Lifecycle
+    ext.archLifecycleVersion = '2.0.0'
 
 
     repositories {
