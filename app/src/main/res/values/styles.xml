@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
     <style name="TextStyle">
         <item name="android:textSize">@dimen/textsize_medium</item>
         <item name="android:maxLines">1</item>

@@ -27,7 +27,6 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
     }
 
     private fun initOnCLickListeners() {
-        btn_add?.setOnClickListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -59,7 +58,6 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_add -> presenter?.createDebt()
         }
     }
 
