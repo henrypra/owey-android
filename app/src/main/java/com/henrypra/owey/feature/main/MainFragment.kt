@@ -7,10 +7,12 @@ import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.model.Debt
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View {
+class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener {
     private val adapter: MainAdapter by lazy { MainAdapter(getCurrentContext()) }
-    var debtList = mutableListOf<Debt>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -19,21 +21,13 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        debtList.add(0, Debt("Mittagsessen", "01-01-2019", "Du schuldest Barbara Geld!", 7.50, "430569335"))
-        debtList.add(1, Debt("Schulgeld", "01-01-2019", "Du 23 Barbara Geld!", 71.50, "430569335"))
-        debtList.add(2, Debt("Fahrrad", "01-01-2019", "Du 42 Barbara Geld!", 75.50, "430569335"))
-        debtList.add(3, Debt("Bäcker", "01-01-2019", "Du 11 Barbara Geld!", 57.50, "430569335"))
-        debtList.add(4, Debt("Leihen", "01-01-2019", "Du 42 42 Geld!", 217.50, "430569335"))
-        debtList.add(5, Debt("Ausflug", "01-01-2019", "Du 242442 Barbara Geld!", 75.50, "430569335"))
-        debtList.add(6, Debt("Ausflug", "01-01-2019", "Du 242442 Barbara Geld!", 75.50, "430569335"))
-        debtList.add(7, Debt("Ausflug", "01-01-2019", "Du 242442 Barbara Geld!", 75.50, "430569335"))
-        debtList.add(8, Debt("Ausflug", "01-01-2019", "Du 242442 Barbara Geld!", 75.50, "430569335"))
-        debtList.add(9, Debt("Ausflug", "01-01-2019", "Du 242442 Barbara Geld!", 75.50, "430569335"))
-        debtList.add(10, Debt("Ausflug", "01-01-2019", "Du 242442 Barbara Geld!", 75.50, "430569335"))
-        debtList.add(11, Debt("Ausflug", "01-01-2019", "Du 242442 Barbara Geld!", 75.50, "430569335"))
-        adapter.debtList = debtList
-        adapter.notifyDataSetChanged()
         initRecyclerView()
+        initOnCLickListeners()
+        presenter?.retrieveDebtFromDatabase()
+    }
+
+    private fun initOnCLickListeners() {
+        btn_add?.setOnClickListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -50,10 +44,23 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
         return super.onOptionsItemSelected(item)
     }
 
+    override fun displayDebtList(debtList: List<Debt>) {
+        GlobalScope.launch(Dispatchers.Main) {
+            adapter.debtList = debtList.toMutableList()
+            adapter.notifyDataSetChanged()
+        }
+    }
+
     private fun initRecyclerView() {
         rv_debt_main?.layoutManager = LinearLayoutManager(getCurrentContext(), LinearLayoutManager.VERTICAL, false)
         rv_debt_main?.setHasFixedSize(true)
         rv_debt_main?.adapter = adapter
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_add -> presenter?.createDebt()
+        }
     }
 
 }
