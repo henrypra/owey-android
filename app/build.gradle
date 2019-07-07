@@ -42,10 +42,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     //AndroidX
     implementation "androidx.appcompat:appcompat:$appcompat"
     implementation "androidx.core:core-ktx:$ktx"
     implementation "com.google.android.material:material:$material"
+    implementation "androidx.room:room-runtime:$room"
+    kapt "androidx.room:room-compiler:$room"
     kapt "androidx.annotation:annotation:$annotation"
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
@@ -57,8 +60,13 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "de.hdodenhof:circleimageview:$circleimage"
 
+    //Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
+
     //Test Dependencies
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation "androidx.room:room-testing:$room"
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
