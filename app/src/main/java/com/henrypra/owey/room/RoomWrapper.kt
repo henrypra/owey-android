@@ -1,7 +1,6 @@
 package com.henrypra.owey.room
 
 import com.henrypra.owey.model.Debt
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

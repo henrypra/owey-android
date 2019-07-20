@@ -29,6 +29,11 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
     private fun initOnCLickListeners() {
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter?.retrieveDebtFromDatabase()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         inflater?.inflate(R.menu.gist_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
