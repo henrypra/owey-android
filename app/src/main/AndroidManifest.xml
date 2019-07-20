@@ -14,7 +14,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.henrypra.owey.feature.main.MainActivity"
+            android:name=".feature.activities.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".feature.activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -28,6 +28,10 @@
         <item name="android:paddingBottom">@dimen/default_padding</item>
     </style>
 
+    <style name="CurrencyInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:textSize">@dimen/textsize_currency</item>
+    </style>
+
     <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:textSize">@dimen/textsize_medium_large</item>
         <item name="android:textColor">@android:color/white</item>
