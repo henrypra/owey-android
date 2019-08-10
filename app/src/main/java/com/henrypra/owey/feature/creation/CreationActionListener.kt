@@ -1,3 +1,6 @@
 package com.henrypra.owey.feature.creation
 
-interface CreationActionListener
+interface CreationActionListener{
+
+    fun goToMainActivity()
+}

@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1C539C</color>
-    <color name="colorPrimaryDark">#12377E</color>
-    <color name="colorAccent">#1C539C</color>
-
+    <color name="color_primary">#00938e</color>
+    <color name="color_primary_dark">#389c91</color>
+    <color name="color_accent">#bfbfbf</color>
 
     <color name="blue">#1C539C</color>
-
+    <color name="main">#00938e</color>
     <color name="main_menu_card_bg">#F8F9FA</color>
 
-    <color name="black">#000000</color>
+    <!-- grayscale -->
     <color name="white">#FFFFFF</color>
+    <color name="light_gray">#bfbfbf</color>
+    <color name="gray">#666666</color>
+    <color name="gray_dark">#515151</color>
+    <color name="gray_darker">#323232</color>
+    <color name="black">#000000</color>
+    <color name="black_87">#DE000000</color>
+
+    <color name="dark_cursor">#222222</color>
+
 </resources>

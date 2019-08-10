@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
+import com.henrypra.owey.feature.activities.DetailActivity
+import com.henrypra.owey.feature.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_creation.*
 
 class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), CreationContract.View, View.OnClickListener {
@@ -21,6 +23,7 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
 
     private fun initOnCLickListeners() {
         btn_create_debt?.setOnClickListener(this)
+        btn_close?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -31,7 +34,7 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
                     presenter?.createDebt(amount)
                 }
             }
+            R.id.btn_close -> activity?.finish()
         }
     }
-
 }

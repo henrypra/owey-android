@@ -13,5 +13,6 @@ class CreationPresenter(val activity: BaseActivity,
 
     override fun createDebt(amount: Double) {
         appDatabase?.let { RoomWrapper.saveDebt(it, Debt(0, title = "Mittagessen", date = "7.7.2019", desc = "Du schuldest Geld", amount = amount)) }
+        actionListener.goToMainActivity()
     }
 }

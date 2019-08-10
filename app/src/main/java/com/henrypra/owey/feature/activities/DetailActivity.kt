@@ -13,6 +13,7 @@ import com.henrypra.owey.utility.FragmentNavigation
 
 class DetailActivity : BaseActivity(),
         CreationActionListener {
+
     var appDatabase: AppDatabase? = null
 
     private val fragmentNavigation: FragmentNavigation by lazy { FragmentNavigation(R.id.detail_fragment_container, this) }
@@ -33,6 +34,10 @@ class DetailActivity : BaseActivity(),
         val creationFragment = CreationFragment()
         creationFragment.presenter = CreationPresenter(this, this, creationFragment, appDatabase)
         fragmentNavigation.replaceFragment(creationFragment)
+    }
+
+    override fun goToMainActivity() {
+        finish()
     }
 
     companion object {

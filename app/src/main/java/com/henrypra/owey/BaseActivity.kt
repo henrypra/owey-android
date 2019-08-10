@@ -6,11 +6,13 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.henrypra.owey.architecture.ToolbarParams
 import kotlinx.android.synthetic.main.default_toolbar.*
+import timber.log.Timber
 
 abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Timber.plant(Timber.DebugTree())
     }
 
     override fun onDestroy() {

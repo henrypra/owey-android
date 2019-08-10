@@ -4,8 +4,8 @@
     android:id="@+id/default_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
-    app:subtitleTextColor="@color/colorAccent"
-    app:titleTextColor="@color/colorAccent">
+    android:background="@color/color_primary"
+    app:subtitleTextColor="@color/color_accent"
+    app:titleTextColor="@color/color_accent">
 
 </androidx.appcompat.widget.Toolbar>
