@@ -28,7 +28,7 @@ buildscript {
     //Lifecycle
     ext.archLifecycleVersion = "2.0.0"
     //Toggle Switch
-    ext.toggle = "1.2.2"
+    ext.toggle_switch = "1.2.2"
 
 
     repositories {
