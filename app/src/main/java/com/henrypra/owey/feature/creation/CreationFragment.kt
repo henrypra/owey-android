@@ -23,7 +23,7 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
 
     private fun initOnCLickListeners() {
 //        btn_create_debt?.setOnClickListener(this)
-        btn_close?.setOnClickListener(this)
+        btn_cancel?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -34,7 +34,7 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
 //                    presenter?.createDebt(amount)
 //                }
 //            }
-            R.id.btn_close -> activity?.finish()
+            R.id.btn_cancel -> activity?.finish()
         }
     }
 }

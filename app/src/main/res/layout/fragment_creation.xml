@@ -6,11 +6,19 @@
     android:background="@color/main">
 
     <ImageButton
-        android:id="@+id/btn_close"
+        android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_padding"
         android:background="@drawable/ic_close" />
+
+    <ImageButton
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/default_padding"
+        android:background="@drawable/ic_check" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,10 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:orientation="horizontal">
-
-
-        </LinearLayout>
+            android:orientation="horizontal"></LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,19 +38,17 @@
             android:background="@drawable/detail_layout_bg"
             android:orientation="vertical">
 
-
             <belka.us.androidtoggleswitch.widgets.ToggleSwitch
-                android:id="@+id/toggle_debt_or_loan"
+                android:id="@+id/switch_debt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/default_padding"
                 android:textSize="@dimen/textsize_medium_large"
                 custom:activeBgColor="@color/color_primary_dark"
-                custom:textToggleLeft="LOAN"
-                custom:textToggleRight="DEBT"
-                custom:toggleWidth="140dp" />
-
+                custom:textToggleLeft="@string/loan_uppercase"
+                custom:textToggleRight="@string/debt_uppercase"
+                custom:toggleWidth="@dimen/switch_width" />
 
             <LinearLayout
                 android:id="@+id/container_desc"
@@ -72,7 +75,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Description" />
+                        android:text="@string/description" />
 
                     <EditText
                         android:id="@+id/edt_description"
@@ -86,7 +89,6 @@
                         android:textColorHint="@color/gray_dark"
                         android:textCursorDrawable="@drawable/black_cursor" />
                 </LinearLayout>
-
 
             </LinearLayout>
 
@@ -115,7 +117,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Amount" />
+                        android:text="@string/amount" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -136,7 +138,7 @@
                             android:textCursorDrawable="@drawable/black_cursor" />
 
                         <Spinner
-                            android:id="@+id/currency"
+                            android:id="@+id/spinner_currency"
                             style="@style/Widget.AppCompat.Spinner.Underlined"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -146,11 +148,9 @@
                             android:textColor="@color/gray_darker"
                             android:textColorHint="@color/gray_dark"
                             android:textCursorDrawable="@drawable/black_cursor" />
-
                     </LinearLayout>
 
                 </LinearLayout>
-
 
             </LinearLayout>
 
@@ -179,10 +179,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Friend" />
+                        android:text="@string/friend" />
 
                     <EditText
-                        android:id="@+id/edt_friend_email"
+                        android:id="@+id/edt_friend_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="@dimen/default_padding"
@@ -193,7 +193,6 @@
                         android:textColorHint="@color/gray_dark"
                         android:textCursorDrawable="@drawable/black_cursor" />
                 </LinearLayout>
-
 
                 <ImageButton
                     android:id="@+id/btn_add_contact"
@@ -229,7 +228,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Note (optional)" />
+                        android:text="@string/note" />
 
                     <EditText
                         android:id="@+id/edt_comment"
@@ -244,11 +243,10 @@
                         android:textCursorDrawable="@drawable/black_cursor" />
                 </LinearLayout>
 
-
             </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 
 </RelativeLayout>

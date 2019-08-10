@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">owey!</string>
 
+    <!--Creation-->
+    <string name="loan_uppercase">LOAN</string>
+    <string name="debt_uppercase">DEBT</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+    <string name="friend">Friend</string>
+    <string name="note">Note (optional)</string>
 
 </resources>
