@@ -22,18 +22,18 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
     }
 
     private fun initOnCLickListeners() {
-        btn_create_debt?.setOnClickListener(this)
+//        btn_create_debt?.setOnClickListener(this)
         btn_close?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_create_debt -> {
-                if (!edt_amount_currency?.text.isNullOrEmpty()) {
-                    val amount: Double = edt_amount_currency?.text.toString().toDouble()
-                    presenter?.createDebt(amount)
-                }
-            }
+//            R.id.btn_create_debt -> {
+//                if (!edt_amount_currency?.text.isNullOrEmpty()) {
+//                    val amount: Double = edt_amount_currency?.text.toString().toDouble()
+//                    presenter?.createDebt(amount)
+//                }
+//            }
             R.id.btn_close -> activity?.finish()
         }
     }
