@@ -13,7 +13,6 @@ import com.henrypra.owey.room.AppDatabase
 import com.henrypra.owey.utility.FragmentNavigation
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : BaseActivity(),
         MainActionListener,
         View.OnClickListener {
@@ -47,7 +46,7 @@ class MainActivity : BaseActivity(),
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            //todo add enum
+            //TODO add enum
             R.id.fab -> loadDetailActivity("CREATION")
 
         }

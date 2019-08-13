@@ -9,10 +9,12 @@ class CreationPresenter(val activity: BaseActivity,
                         val actionListener: CreationActionListener,
                         val view: CreationContract.View,
                         private val appDatabase: AppDatabase?) : CreationContract.Presenter {
+
     lateinit var debt: Debt
 
-    override fun createDebt(amount: Double) {
-        appDatabase?.let { RoomWrapper.saveDebt(it, Debt(0, title = "Mittagessen", date = "7.7.2019", desc = "Du schuldest Geld", amount = amount)) }
+    override fun createDebt(amount: Double?, title: String?, friend: String, note: String?, isDebt: Boolean?) {
+        appDatabase?.let { RoomWrapper.saveDebt(it, Debt(0, title = title, amount = amount, friend = friend, note = note, isDebt = isDebt, date = "0")) }
         actionListener.goToMainActivity()
     }
+
 }

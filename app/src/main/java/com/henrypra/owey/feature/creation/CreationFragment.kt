@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
-import com.henrypra.owey.feature.activities.DetailActivity
-import com.henrypra.owey.feature.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_creation.*
 
 class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), CreationContract.View, View.OnClickListener {
@@ -22,18 +20,29 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
     }
 
     private fun initOnCLickListeners() {
-//        btn_create_debt?.setOnClickListener(this)
+        btn_send?.setOnClickListener(this)
         btn_cancel?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-//            R.id.btn_create_debt -> {
-//                if (!edt_amount_currency?.text.isNullOrEmpty()) {
-//                    val amount: Double = edt_amount_currency?.text.toString().toDouble()
-//                    presenter?.createDebt(amount)
-//                }
-//            }
+            R.id.btn_send -> {
+                val amount: Double? = edt_amount?.text.toString().toDoubleOrNull()
+                val title: String = edt_title?.text.toString()
+                val friend: String = edt_friend?.text.toString()
+                val note: String = edt_note?.text.toString()
+                val isDebt: Boolean? = if (switch_debt != null) switch_debt?.isActivated else false
+
+                if (validateNonBlank(amount.toString(), R.string.title)
+                        && validateNonBlank(title, R.string.title)
+                        && validateNonBlank(friend, R.string.title)
+                        && validateNonBlank(note, R.string.title)) {
+
+                    presenter?.createDebt(amount, title, friend, note, isDebt)
+                }
+
+
+            }
             R.id.btn_cancel -> activity?.finish()
         }
     }
