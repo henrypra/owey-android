@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.henrypra.owey.dao.DebtDao
 import com.henrypra.owey.model.Debt
 
-@Database(entities = [Debt::class], version = 4)
+@Database(entities = [Debt::class], version = 5)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun debtDao(): DebtDao

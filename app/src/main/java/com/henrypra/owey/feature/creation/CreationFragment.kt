@@ -1,6 +1,9 @@
 package com.henrypra.owey.feature.creation
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +16,12 @@ import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.utility.DialogUtil
 import kotlinx.android.synthetic.main.fragment_creation.*
 
+
 class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), CreationContract.View, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
+    private val PICK_CONTACT = 1
     private val currencyList = arrayOf("€", "£", "$")
-    private var selectedCurrency: String? = ""
+    private var selectedCurrency: String? = currencyList[0]
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -31,6 +36,7 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
 
     private fun initOnClickListeners() {
         btn_send?.setOnClickListener(this)
+        btn_add_contact?.setOnClickListener(this)
         btn_cancel?.setOnClickListener(this)
     }
 
@@ -67,7 +73,7 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
                         val note: String = edt_note?.text.toString()
                         val isDebt: Boolean? = if (switch_debt != null) switch_debt?.isActivated else false
 
-                        presenter?.createDebt(amount, title, friend, note, isDebt)
+                        presenter?.createDebt(amount, selectedCurrency, title, friend, note, isDebt)
                     } catch (e: Exception) {
                         DialogUtil.buildCreationErrorDialog(context)
                         e.stackTrace
@@ -75,7 +81,24 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
                 }
 
             }
+            R.id.btn_add_contact -> {
+                val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+                startActivityForResult(intent, PICK_CONTACT)
+
+            }
             R.id.btn_cancel -> activity?.finish()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_CONTACT && resultCode == RESULT_OK) {
+            val contactUri = data?.data
+            val cursor = activity?.contentResolver?.query(contactUri, null, null, null, null)
+            cursor?.moveToFirst()
+            val column: Int? = cursor?.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+
+            edt_friend?.setText(column?.let { cursor.getString(it) })
         }
     }
 }
