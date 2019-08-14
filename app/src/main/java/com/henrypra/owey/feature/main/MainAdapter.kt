@@ -35,10 +35,11 @@ class MainAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private fun initGist(holder: GistHolder, position: Int) {
+        //TODO
         val currentDebt = debtList[position]
         holder.title.text = currentDebt.title
         holder.date.text = currentDebt.date
-        holder.desc.text = currentDebt.desc
+        holder.desc.text = ""
         holder.amount.text = currentDebt.amount.toString()
 //        Picasso.get().load(currentDebt.owner?.avatarUrl).into(holder.avatar)
     }

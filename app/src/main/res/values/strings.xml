@@ -1,12 +1,20 @@
 <resources>
     <string name="app_name">owey!</string>
 
-    <!--Login Screen-->
-    <string name="app_login_hint">Please login to your account!"</string>
-    <string name="app_login_email_hint">Email</string>
-    <string name="app_login_password_hint">Password</string>
-    <string name="app_login_forgot_password">Forgot password?</string>
-    <string name="app_login_button_log_in">LOG IN</string>
-    <string name="app_login_sign_up_hint">Don\'t have an account? Sign up!</string>
+    <!--Creation-->
+    <string name="loan_uppercase">LOAN</string>
+    <string name="debt_uppercase">DEBT</string>
+    <string name="title">Title</string>
+    <string name="amount">Amount</string>
+    <string name="friend">Friend</string>
+    <string name="note">Note (optional)</string>
+
+    <!--Error-->
+    <string name="error_title">An error occured!</string>
+    <string name="error_wrong_input_body">Make sure, your input is correct.</string>
+    <string name="error_code_empty_field">This field cannot be empty.</string>
+
+    <!--Menu-->
+    <string name="understood">Okay</string>
 
 </resources>
