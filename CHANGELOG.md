@@ -1,25 +1,12 @@
 # Changelog
 
-## [1.0.0] (TODO)
+## [1.0(2)]
 
 ### Added
-- Feature Login Screen
+- Creation Screen
 
-### Fixed
+## [1.0(1)]
 
-
-### Removed
-
-
-### Changed
-
-
-### Fixed
-
-
-### Deprecated
-
-
-### Known Issues
-
----
+### Added
+- Home Screen
+- Implementation of Room Database
