@@ -16,7 +16,6 @@ import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.utility.DialogUtil
 import kotlinx.android.synthetic.main.fragment_creation.*
 
-
 class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), CreationContract.View, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private val PICK_CONTACT = 1
@@ -84,7 +83,6 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
             R.id.btn_add_contact -> {
                 val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
                 startActivityForResult(intent, PICK_CONTACT)
-
             }
             R.id.btn_cancel -> activity?.finish()
         }
