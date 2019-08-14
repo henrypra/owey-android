@@ -9,4 +9,12 @@
     <string name="friend">Friend</string>
     <string name="note">Note (optional)</string>
 
+    <!--Error-->
+    <string name="error_title">An error occured!</string>
+    <string name="error_wrong_input_body">Make sure, your input is correct.</string>
+    <string name="error_code_empty_field">This field cannot be empty.</string>
+
+    <!--Menu-->
+    <string name="understood">Okay</string>
+
 </resources>

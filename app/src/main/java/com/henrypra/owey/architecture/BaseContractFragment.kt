@@ -31,14 +31,6 @@ abstract class BaseContractFragment<T : BasePresenter> : Fragment(), BaseView<T>
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    protected fun validateNonBlank(input: String?, message: Int): Boolean {
-        val blank = input != null && input.trim { it <= ' ' }.isEmpty()
-        if (blank) {
-            error(message)
-        }
-        return !blank
-    }
-
     override fun onStart() {
         super.onStart()
         presenter?.onFragmentStart()
