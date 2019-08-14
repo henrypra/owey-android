@@ -5,13 +5,19 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.utility.DialogUtil
 import kotlinx.android.synthetic.main.fragment_creation.*
 
-class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), CreationContract.View, View.OnClickListener {
+class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), CreationContract.View, View.OnClickListener, AdapterView.OnItemSelectedListener {
+
+    private val currencyList = arrayOf("€", "£", "$")
+    private var selectedCurrency: String? = ""
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_creation, container, false)
@@ -19,12 +25,20 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initOnCLickListeners()
+        initOnClickListeners()
+        initSpinner()
     }
 
-    private fun initOnCLickListeners() {
+    private fun initOnClickListeners() {
         btn_send?.setOnClickListener(this)
         btn_cancel?.setOnClickListener(this)
+    }
+
+    private fun initSpinner() {
+        spinner_currency?.onItemSelectedListener = this
+        val currencyAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, currencyList)
+        currencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner_currency?.adapter = currencyAdapter
     }
 
     private fun isValidInput(input: EditText?): Boolean {
@@ -35,6 +49,12 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
             true
         }
     }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        selectedCurrency = currencyList[position]
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {}
 
     override fun onClick(v: View?) {
         when (v?.id) {
