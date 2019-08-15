@@ -5,6 +5,9 @@
 ### Added
 - Creation Screen
 
+### Changed
+- Style main Screen
+
 ## [1.0(1)]
 
 ### Added
