@@ -7,6 +7,8 @@ import com.henrypra.owey.model.Debt
 interface DetailContract {
     interface Presenter : BasePresenter {
         fun retrieveDebtForId()
+
+        fun deleteDebtForId()
     }
 
     interface View : BaseView<Presenter> {

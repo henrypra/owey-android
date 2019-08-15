@@ -2,15 +2,18 @@ package com.henrypra.owey.feature.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.model.Debt
 import kotlinx.android.synthetic.main.fragment_detail.*
 
-class DetailFragment : BaseContractFragment<DetailContract.Presenter>(), DetailContract.View, View.OnClickListener {
 
+class DetailFragment : BaseContractFragment<DetailContract.Presenter>(), DetailContract.View, View.OnClickListener, PopupMenu.OnMenuItemClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_detail, container, false)
@@ -24,6 +27,7 @@ class DetailFragment : BaseContractFragment<DetailContract.Presenter>(), DetailC
 
     private fun initOnClickListeners() {
         btn_back?.setOnClickListener(this)
+        btn_more?.setOnClickListener(this)
     }
 
     override fun displayDebt(debt: Debt) {
@@ -33,9 +37,32 @@ class DetailFragment : BaseContractFragment<DetailContract.Presenter>(), DetailC
         edt_detail_note?.setText(debt.note)
     }
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
+    private fun openOptionsMenu(view: View) {
+        val popup = context?.let { PopupMenu(it, view) }
+        val inflater = popup?.menuInflater
+        inflater?.inflate(R.menu.options_detail_menu, popup.menu)
+        popup?.show()
+        popup?.setOnMenuItemClickListener(this)
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        return when {
+            item?.itemId == R.id.action_edit -> {
+                Toast.makeText(context, "On edit clicked", Toast.LENGTH_LONG).show()
+                true
+            }
+            item?.itemId == R.id.action_delete -> {
+                presenter?.deleteDebtForId()
+                true
+            }
+            else -> false
+        }
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
             R.id.btn_back -> activity?.finish()
+            R.id.btn_more -> openOptionsMenu(view)
         }
     }
 }

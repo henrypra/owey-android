@@ -13,7 +13,6 @@ class DetailPresenter(val activity: BaseActivity,
 
     override fun retrieveDebtForId() {
         appDatabase?.let {
-
             RoomWrapper.getDebtForId(it, object : RoomWrapper.SingleDebtListener {
                 override fun getSingleDebt(debt: Debt) {
                     view.displayDebt(debt)
@@ -22,4 +21,8 @@ class DetailPresenter(val activity: BaseActivity,
         }
     }
 
+    override fun deleteDebtForId() {
+        appDatabase?.let { RoomWrapper.deleteDebtForId(it, id) }
+        actionListener.goToMainActivity()
+    }
 }

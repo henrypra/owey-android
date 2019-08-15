@@ -17,8 +17,7 @@ interface DebtDao {
     @Insert
     fun insertDebt(debt: Debt)
 
-    @Query("DELETE FROM debt")
-    fun deleteAll()
-
+    @Query("DELETE FROM debt WHERE id = :debtId")
+    fun deleteDebt(debtId: Int)
 
 }

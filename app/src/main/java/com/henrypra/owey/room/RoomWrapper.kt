@@ -26,6 +26,12 @@ object RoomWrapper {
         }
     }
 
+    fun deleteDebtForId(appDatabase: AppDatabase, id: Int) {
+        GlobalScope.launch {
+            appDatabase.debtDao().deleteDebt(id)
+        }
+    }
+
     interface DebtListener {
         fun getAllDebts(debtList: List<Debt>)
     }
