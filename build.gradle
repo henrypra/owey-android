@@ -15,6 +15,7 @@ buildscript {
     ext.ktx = "1.0.2"
     ext.material = "1.0.0"
     ext.annotation = "1.0.0"
+    ext.recycler_refresh = "1.0.0"
     //Retrofit
     ext.okHttp = "3.11.0"
     ext.retrofit = "2.5.0"
@@ -29,7 +30,6 @@ buildscript {
     ext.archLifecycleVersion = "2.0.0"
     //Toggle Switch
     ext.toggle_switch = "1.2.2"
-
 
     repositories {
         google()

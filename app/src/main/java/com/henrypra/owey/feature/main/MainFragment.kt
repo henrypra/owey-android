@@ -1,8 +1,11 @@
 package com.henrypra.owey.feature.main
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.model.Debt
@@ -11,8 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener, MainAdapter.DebtClickListener {
-
+class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener,  MainAdapter.DebtClickListener {
     private val adapter: MainAdapter by lazy { MainAdapter(getCurrentContext(), this) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -24,6 +26,7 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initOnCLickListeners()
+        refresh_container?.setOnRefreshListener(this)
         presenter?.retrieveDebtFromDatabase()
     }
 
@@ -35,24 +38,11 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
         presenter?.retrieveDebtFromDatabase()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.gist_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.mm_refresh -> {
-                adapter.notifyDataSetChanged()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     override fun displayDebtList(debtList: List<Debt>) {
         GlobalScope.launch(Dispatchers.Main) {
             adapter.debtList = debtList.toMutableList()
             adapter.notifyDataSetChanged()
+            refresh_container?.isRefreshing = false
         }
     }
 
@@ -65,6 +55,10 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
     override fun onClick(v: View?) {
         when (v?.id) {
         }
+    }
+
+    override fun onRefresh() {
+        presenter?.retrieveDebtFromDatabase()
     }
 
     override fun onDebtClicked(id: Int) {

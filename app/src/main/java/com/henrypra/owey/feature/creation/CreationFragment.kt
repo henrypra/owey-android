@@ -70,7 +70,7 @@ class CreationFragment : BaseContractFragment<CreationContract.Presenter>(), Cre
                         val title: String = edt_title?.text.toString()
                         val friend: String = edt_friend?.text.toString()
                         val note: String = edt_note?.text.toString()
-                        val isDebt: Boolean? = if (switch_debt != null) switch_debt?.isActivated else false
+                        val isDebt: Boolean? = switch_debt?.checkedTogglePosition == 1
 
                         presenter?.createDebt(amount, selectedCurrency, title, friend, note, isDebt)
                     } catch (e: Exception) {
