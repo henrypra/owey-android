@@ -89,7 +89,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/default_padding"
-                android:clickable="false"
                 android:textSize="@dimen/textsize_medium_large"
                 custom:activeBgColor="@color/color_primary_dark"
                 custom:textToggleLeft="@string/loan_uppercase"

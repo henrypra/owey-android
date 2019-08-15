@@ -31,6 +31,7 @@ class DetailFragment : BaseContractFragment<DetailContract.Presenter>(), DetailC
     }
 
     override fun displayDebt(debt: Debt) {
+        switch_debt?.checkedTogglePosition = if (debt.isDebt == true) 1 else 0
         edt_amount?.setText(debt.amount.toString() + debt.currency)
         tv_title?.text = debt.title
         edt_friend?.setText(debt.friend)
