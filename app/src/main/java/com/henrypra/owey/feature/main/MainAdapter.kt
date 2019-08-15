@@ -10,7 +10,7 @@ import com.henrypra.owey.R
 import com.henrypra.owey.model.Debt
 import kotlinx.android.synthetic.main.item_debt.view.*
 
-class MainAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MainAdapter(val context: Context?, var listener: DebtClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var debtList = mutableListOf<Debt>()
 
@@ -42,6 +42,10 @@ class MainAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.Vie
         holder.desc.text = ""
         holder.amount.text = currentDebt.amount.toString()
 //        Picasso.get().load(currentDebt.owner?.avatarUrl).into(holder.avatar)
+
+        holder.itemView.setOnClickListener {
+            listener.onDebtClicked(currentDebt.id)
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -58,5 +62,7 @@ class MainAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.Vie
 
     class EmptyHolder(view: View) : RecyclerView.ViewHolder(view)
 
-
+    interface DebtClickListener {
+        fun onDebtClicked(id: Int)
+    }
 }

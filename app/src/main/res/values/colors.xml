@@ -6,6 +6,7 @@
 
     <color name="blue">#1C539C</color>
     <color name="main">#00938e</color>
+    <color name="main_transparent">#B300938e</color>
     <color name="main_menu_card_bg">#F8F9FA</color>
 
     <!-- grayscale -->

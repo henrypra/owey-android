@@ -10,6 +10,8 @@ interface MainContract {
 
         fun retrieveDebtFromDatabase()
 
+        fun onDebtClicked(id: Int)
+
     }
 
     interface View : BaseView<Presenter> {

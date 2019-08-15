@@ -11,8 +11,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener {
-    private val adapter: MainAdapter by lazy { MainAdapter(getCurrentContext()) }
+class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener, MainAdapter.DebtClickListener {
+
+    private val adapter: MainAdapter by lazy { MainAdapter(getCurrentContext(), this) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -66,5 +67,8 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
         }
     }
 
+    override fun onDebtClicked(id: Int) {
+        presenter?.onDebtClicked(id)
+    }
 }
 

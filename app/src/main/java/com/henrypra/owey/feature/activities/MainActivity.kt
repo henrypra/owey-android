@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(),
         MainActionListener,
         View.OnClickListener {
+
     var appDatabase: AppDatabase? = null
 
     private val fragmentNavigation: FragmentNavigation by lazy { FragmentNavigation(R.id.main_fragment_container, this) }
@@ -38,16 +39,21 @@ class MainActivity : BaseActivity(),
         fragmentNavigation.replaceFragment(mainFragment)
     }
 
-    private fun loadDetailActivity(fragment: String) {
+    private fun loadDetailActivity(fragment: String, id: Int?) {
         intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("CURRENT_FRAGMENT", fragment)
+        intent.putExtra("ID", id)
         startActivity(intent)
+    }
+
+    override fun onGoToDetailDebt(id: Int) {
+        loadDetailActivity("DETAIL", id)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             //TODO add enum
-            R.id.fab -> loadDetailActivity("CREATION")
+            R.id.fab -> loadDetailActivity("CREATION", null)
 
         }
     }

@@ -20,5 +20,8 @@ class MainPresenter(val activity: BaseActivity,
         }
     }
 
+    override fun onDebtClicked(id: Int) {
+        actionListener.onGoToDetailDebt(id)
+    }
 
 }

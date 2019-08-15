@@ -1,3 +1,6 @@
 package com.henrypra.owey.feature.main
 
-interface MainActionListener
+interface MainActionListener {
+
+    fun onGoToDetailDebt(id: Int)
+}

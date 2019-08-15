@@ -13,6 +13,13 @@ object RoomWrapper {
         }
     }
 
+    fun getDebtForId(appDatabase: AppDatabase, listener: SingleDebtListener, id: Int) {
+        GlobalScope.launch {
+            val debt = appDatabase.debtDao().getSingleDebt(id)
+            listener.getSingleDebt(debt)
+        }
+    }
+
     fun saveDebt(appDatabase: AppDatabase, debt: Debt) {
         GlobalScope.launch {
             appDatabase.debtDao().insertDebt(debt)
@@ -21,6 +28,10 @@ object RoomWrapper {
 
     interface DebtListener {
         fun getAllDebts(debtList: List<Debt>)
+    }
+
+    interface SingleDebtListener {
+        fun getSingleDebt(debt: Debt)
     }
 
 }

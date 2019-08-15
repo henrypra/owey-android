@@ -11,6 +11,9 @@ interface DebtDao {
     @Query("SELECT * FROM debt")
     fun getAllDebt(): List<Debt>
 
+    @Query("SELECT * FROM debt WHERE id = :debtId")
+    fun getSingleDebt(debtId: Int): Debt
+
     @Insert
     fun insertDebt(debt: Debt)
 
