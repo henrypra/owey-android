@@ -1,8 +1,11 @@
 package com.henrypra.owey.feature.main
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dinuscxj.refresh.RecyclerRefreshLayout
 import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.model.Debt
@@ -11,7 +14,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener {
+class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener, RecyclerRefreshLayout.OnRefreshListener {
+    override fun onRefresh() {
+
+    }
+
     private val adapter: MainAdapter by lazy { MainAdapter(getCurrentContext()) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -23,6 +30,7 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initOnCLickListeners()
+        refresh_layout?.setOnRefreshListener(this)
         presenter?.retrieveDebtFromDatabase()
     }
 
@@ -32,20 +40,6 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
     override fun onResume() {
         super.onResume()
         presenter?.retrieveDebtFromDatabase()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.gist_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.mm_refresh -> {
-                adapter.notifyDataSetChanged()
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun displayDebtList(debtList: List<Debt>) {

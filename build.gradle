@@ -29,7 +29,8 @@ buildscript {
     ext.archLifecycleVersion = "2.0.0"
     //Toggle Switch
     ext.toggle_switch = "1.2.2"
-
+    //Recyclerview refresh
+    ext.refresh_recycler = "2.0.5"
 
     repositories {
         google()

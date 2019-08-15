@@ -60,6 +60,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "de.hdodenhof:circleimageview:$circleimage"
     implementation "us.belka:androidtoggleswitch:$toggle_switch"
+    implementation "com.dinuscxj:recyclerrefreshlayout:$refresh_recycler"
     //Lifecycle components
     implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"

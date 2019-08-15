@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.dinuscxj.refresh.RecyclerRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -12,4 +13,4 @@
         android:clipToPadding="false"
         android:padding="@dimen/half_padding" />
 
-</LinearLayout>
+</com.dinuscxj.refresh.RecyclerRefreshLayout>
