@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dinuscxj.refresh.RecyclerRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.model.Debt
@@ -14,10 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener, RecyclerRefreshLayout.OnRefreshListener {
-    override fun onRefresh() {
-
-    }
+class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private val adapter: MainAdapter by lazy { MainAdapter(getCurrentContext()) }
 
@@ -30,7 +27,7 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initOnCLickListeners()
-        refresh_layout?.setOnRefreshListener(this)
+        refresh_container?.setOnRefreshListener(this)
         presenter?.retrieveDebtFromDatabase()
     }
 
@@ -46,6 +43,7 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
         GlobalScope.launch(Dispatchers.Main) {
             adapter.debtList = debtList.toMutableList()
             adapter.notifyDataSetChanged()
+            refresh_container?.isRefreshing = false
         }
     }
 
@@ -58,6 +56,10 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
     override fun onClick(v: View?) {
         when (v?.id) {
         }
+    }
+
+    override fun onRefresh() {
+        presenter?.retrieveDebtFromDatabase()
     }
 
 }

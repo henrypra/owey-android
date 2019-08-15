@@ -48,8 +48,6 @@ class MainAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.Vie
         holder.friend.text = currentDebt.friend
         holder.amount.text = currentDebt.amount.toString() + currentDebt.currency
         holder.avatar.text = currentDebt.friend.first().toString().toUpperCase()
-
-
     }
 
     override fun getItemViewType(position: Int): Int {

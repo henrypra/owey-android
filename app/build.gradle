@@ -48,6 +48,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$ktx"
     implementation "com.google.android.material:material:$material"
     implementation "androidx.room:room-runtime:$room"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$recycler_refresh"
     kapt "androidx.room:room-compiler:$room"
     kapt "androidx.annotation:annotation:$annotation"
     //Retrofit
@@ -60,8 +61,6 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "de.hdodenhof:circleimageview:$circleimage"
     implementation "us.belka:androidtoggleswitch:$toggle_switch"
-    implementation "com.dinuscxj:recyclerrefreshlayout:$refresh_recycler"
-    //Lifecycle components
     implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.dinuscxj.refresh.RecyclerRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/refresh_layout"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,4 +13,4 @@
         android:clipToPadding="false"
         android:padding="@dimen/half_padding" />
 
-</com.dinuscxj.refresh.RecyclerRefreshLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
