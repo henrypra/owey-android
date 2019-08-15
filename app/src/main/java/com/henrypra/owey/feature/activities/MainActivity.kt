@@ -4,8 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.room.Room
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.henrypra.owey.BaseActivity
 import com.henrypra.owey.R
+import com.henrypra.owey.feature.category.CategoryActionListener
+import com.henrypra.owey.feature.category.CategoryFragment
+import com.henrypra.owey.feature.category.CategoryPresenter
 import com.henrypra.owey.feature.main.MainActionListener
 import com.henrypra.owey.feature.main.MainFragment
 import com.henrypra.owey.feature.main.MainPresenter
@@ -15,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(),
         MainActionListener,
+        CategoryActionListener,
         View.OnClickListener {
 
     var appDatabase: AppDatabase? = null
@@ -27,6 +33,29 @@ class MainActivity : BaseActivity(),
         appDatabase = Room.databaseBuilder(this, AppDatabase::class.java, DATABASE_NAME).fallbackToDestructiveMigration().build()
         loadMainFragment()
         initOnCLickListeners()
+        setupViewPager(container)
+
+    }
+
+    private fun setupViewPager(pager: ViewPager?) {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+
+        val mainFragment = MainFragment()
+        mainFragment.presenter = MainPresenter(this, this, mainFragment, appDatabase)
+        adapter.addFragment(mainFragment, "Home")
+
+        val debtFragment = CategoryFragment()
+        debtFragment.presenter = CategoryPresenter(this, this, debtFragment, appDatabase)
+        adapter.addFragment(debtFragment, "Debt")
+
+        val loanFragment = CategoryFragment()
+        loanFragment.presenter = CategoryPresenter(this, this, loanFragment, appDatabase)
+        adapter.addFragment(loanFragment, "Loans")
+
+        pager?.adapter = adapter
+
+        pager?.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
+        tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(pager))
     }
 
     private fun initOnCLickListeners() {
@@ -34,8 +63,8 @@ class MainActivity : BaseActivity(),
     }
 
     private fun loadMainFragment() {
-        val mainFragment = MainFragment()
-        mainFragment.presenter = MainPresenter(this, this, mainFragment, appDatabase)
+        val mainFragment = CategoryFragment()
+        mainFragment.presenter = CategoryPresenter(this, this, mainFragment, appDatabase)
         fragmentNavigation.replaceFragment(mainFragment)
     }
 

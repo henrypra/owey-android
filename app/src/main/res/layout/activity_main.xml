@@ -26,7 +26,7 @@
                 android:id="@+id/tv_app_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="owey! Home"
+                android:text="Home"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
@@ -50,13 +50,13 @@
 
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tab_debt"
+                android:id="@+id/tab_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:icon="@drawable/ic_thumb_down" />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tab_loan"
+                android:id="@+id/tab_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:icon="@drawable/ic_thumb_up" />
@@ -80,13 +80,13 @@
         <FrameLayout
             android:id="@+id/main_fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
