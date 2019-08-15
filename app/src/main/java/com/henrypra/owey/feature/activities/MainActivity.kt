@@ -16,6 +16,7 @@ import com.henrypra.owey.feature.main.MainFragment
 import com.henrypra.owey.feature.main.MainPresenter
 import com.henrypra.owey.room.AppDatabase
 import com.henrypra.owey.utility.FragmentNavigation
+import com.henrypra.owey.views.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(),
