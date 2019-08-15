@@ -25,7 +25,7 @@ class MainActivity : BaseActivity(),
 
     var appDatabase: AppDatabase? = null
 
-    private val fragmentNavigation: FragmentNavigation by lazy { FragmentNavigation(R.id.main_fragment_container, this) }
+    private val fragmentNavigation: FragmentNavigation by lazy { FragmentNavigation(R.id.container, this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,6 @@ class MainActivity : BaseActivity(),
         loadMainFragment()
         initOnCLickListeners()
         setupViewPager(container)
-
     }
 
     private fun setupViewPager(pager: ViewPager?) {
@@ -42,15 +41,15 @@ class MainActivity : BaseActivity(),
 
         val mainFragment = MainFragment()
         mainFragment.presenter = MainPresenter(this, this, mainFragment, appDatabase)
-        adapter.addFragment(mainFragment, "Home")
+        adapter.addFragment(mainFragment)
 
         val debtFragment = CategoryFragment()
-        debtFragment.presenter = CategoryPresenter(this, this, debtFragment, appDatabase)
-        adapter.addFragment(debtFragment, "Debt")
+        debtFragment.presenter = CategoryPresenter(this, this, debtFragment, true, appDatabase)
+        adapter.addFragment(debtFragment)
 
         val loanFragment = CategoryFragment()
-        loanFragment.presenter = CategoryPresenter(this, this, loanFragment, appDatabase)
-        adapter.addFragment(loanFragment, "Loans")
+        loanFragment.presenter = CategoryPresenter(this, this, loanFragment, false, appDatabase)
+        adapter.addFragment(loanFragment)
 
         pager?.adapter = adapter
 
@@ -63,8 +62,8 @@ class MainActivity : BaseActivity(),
     }
 
     private fun loadMainFragment() {
-        val mainFragment = CategoryFragment()
-        mainFragment.presenter = CategoryPresenter(this, this, mainFragment, appDatabase)
+        val mainFragment = MainFragment()
+        mainFragment.presenter = MainPresenter(this, this, mainFragment, appDatabase)
         fragmentNavigation.replaceFragment(mainFragment)
     }
 

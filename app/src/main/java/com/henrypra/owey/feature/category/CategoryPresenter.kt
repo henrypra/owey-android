@@ -8,13 +8,18 @@ import com.henrypra.owey.room.RoomWrapper
 class CategoryPresenter(val activity: BaseActivity,
                         val actionListener: CategoryActionListener,
                         val view: CategoryContract.View,
+                        val isDebtList: Boolean,
                         private val appDatabase: AppDatabase?) : CategoryContract.Presenter {
 
     override fun retrieveDebtFromDatabase() {
         appDatabase?.let {
             RoomWrapper.getAllDebts(it, object : RoomWrapper.DebtListener {
                 override fun getAllDebts(debtList: List<Debt>) {
-                    view.displayDebtList(debtList)
+                    if (isDebtList) {
+                        view.displayDebtList(debtList.filter { debt -> debt.isDebt == true })
+                    } else {
+                        view.displayDebtList(debtList.filter { debt -> debt.isDebt == false })
+                    }
                 }
             })
         }
