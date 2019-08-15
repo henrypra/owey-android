@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.henrypra.owey.R
 import com.henrypra.owey.model.Debt
@@ -35,13 +36,18 @@ class MainAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private fun initGist(holder: GistHolder, position: Int) {
-        //TODO
         val currentDebt = debtList[position]
+        if (currentDebt.isDebt == true) {
+            holder.amount.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.orange) })
+            holder.border.backgroundTintList = context?.let { ContextCompat.getColorStateList(it, R.color.orange) }
+        } else {
+            holder.amount.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.light_green) })
+            holder.border.backgroundTintList = context?.let { ContextCompat.getColorStateList(it, R.color.light_green) }
+        }
         holder.title.text = currentDebt.title
-        holder.date.text = currentDebt.date
-        holder.desc.text = ""
-        holder.amount.text = currentDebt.amount.toString()
-//        Picasso.get().load(currentDebt.owner?.avatarUrl).into(holder.avatar)
+        holder.friend.text = currentDebt.friend
+        holder.amount.text = currentDebt.amount.toString() + currentDebt.currency
+        holder.avatar.text = currentDebt.friend.first().toString().toUpperCase()
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -49,11 +55,11 @@ class MainAdapter(val context: Context?) : RecyclerView.Adapter<RecyclerView.Vie
     }
 
     class GistHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title = view.tv_title
-        val date = view.tv_date
-        val desc = view.tv_desc
-        val avatar = view.img_avatar
-        val amount = view.tv_amount
+        var title = view.tv_title
+        var friend = view.tv_friend
+        var avatar = view.tv_letter_friend
+        var amount = view.tv_amount
+        var border = view.border
     }
 
     class EmptyHolder(view: View) : RecyclerView.ViewHolder(view)
