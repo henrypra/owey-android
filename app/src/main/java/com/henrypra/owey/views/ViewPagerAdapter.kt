@@ -1,4 +1,4 @@
-package com.henrypra.owey.feature.activities
+package com.henrypra.owey.views
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

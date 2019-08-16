@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/rectangle_border"
-        android:backgroundTint="@color/amber" />
+        android:backgroundTint="@color/orange" />
 
     <LinearLayout
         android:layout_width="match_parent"

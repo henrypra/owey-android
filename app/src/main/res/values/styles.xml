@@ -6,9 +6,9 @@
         <item name="colorAccent">@color/color_accent</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="TextStyle">
         <item name="android:textSize">@dimen/textsize_medium</item>
@@ -33,6 +33,11 @@
         <item name="android:maxLines">1</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="HeadlineStyle">
+        <item name="android:textSize">@dimen/textsize_large</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
@@ -62,6 +67,16 @@
         <item name="android:letterSpacing">0.125</item>
     </style>
 
+    <!--SciChart-->
+    <style name="SciChart_Theme" parent="SciChart_BaseStyle">
+        <item name="sciChartBackground">@android:color/transparent</item>
+
+    </style>
+
+    <style name="DividerStyle">
+        <item name="android:background">@color/divider_color</item>
+    </style>
+
     <!--Settings-->
     <style name="SettingsBasicStyle">
         <item name="android:textColor">@color/black_87</item>
@@ -80,5 +95,9 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="DividerHorizontalStyle" parent="DividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_line</item>
+    </style>
 
 </resources>

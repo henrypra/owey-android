@@ -30,6 +30,8 @@ buildscript {
     ext.archLifecycleVersion = "2.0.0"
     //Toggle Switch
     ext.toggle_switch = "1.2.2"
+    //SciChart
+    ext.scichart = "2.5.0.2583"
 
     repositories {
         google()
@@ -49,6 +51,7 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://maven.google.com' }
+        maven { url 'https://www.myget.org/F/abtsoftware/maven' }
     }
 }
 

@@ -64,6 +64,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
 
+    //Scichart
+    implementation (group: 'com.scichart.library', name: 'core', version: "$scichart", ext: 'aar')
+    implementation (group: 'com.scichart.library', name: 'data', version: "$scichart", ext: 'aar')
+    implementation (group: 'com.scichart.library', name: 'drawing', version: "$scichart", ext: 'aar')
+    implementation (group: 'com.scichart.library', name: 'charting', version: "$scichart", ext: 'aar')
+    implementation (group: 'com.scichart.library', name: 'extensions',version: "$scichart", ext: 'aar')
+
     //Test Dependencies
     testImplementation 'junit:junit:4.12'
     androidTestImplementation "androidx.room:room-testing:$room"

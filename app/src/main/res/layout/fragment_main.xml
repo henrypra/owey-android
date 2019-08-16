@@ -5,12 +5,62 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_debt_main"
+    <LinearLayout
+        android:id="@+id/data_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:padding="@dimen/half_padding" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/HeadlineStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/half_padding"
+            android:layout_marginTop="@dimen/half_padding"
+            android:layout_marginEnd="@dimen/half_padding"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="@string/dashboard_total"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/half_padding"
+            android:layout_marginTop="@dimen/divider_line"
+            android:layout_marginEnd="@dimen/half_padding"
+            android:textAlignment="center"
+            android:textSize="@dimen/textsize_medium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/chart_container"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginBottom="@dimen/quarter_padding"
+                android:gravity="center"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+
+        <View style="@style/DividerHorizontalStyle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_debt_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:padding="@dimen/half_padding" />
+
+
+    </LinearLayout>
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

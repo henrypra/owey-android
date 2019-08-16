@@ -13,7 +13,6 @@ import com.henrypra.owey.feature.detail.DetailPresenter
 import com.henrypra.owey.room.AppDatabase
 import com.henrypra.owey.utility.FragmentNavigation
 
-
 class DetailActivity : BaseActivity(),
         CreationActionListener,
         DetailActionListener {

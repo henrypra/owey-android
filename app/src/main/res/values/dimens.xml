@@ -9,6 +9,7 @@
     <dimen name="half_padding">8dp</dimen>
     <dimen name="quarter_padding">4dp</dimen>
     <dimen name="card_corner">4dp</dimen>
+    <dimen name="divider_line">1dp</dimen>
 
     <!-- Textsizes -->
     <dimen name="textsize_small">10sp</dimen>
@@ -19,6 +20,7 @@
     <dimen name="textsize_xlarge">22sp</dimen>
     <dimen name="textsize_xxlarge">24sp</dimen>
     <dimen name="textsize_title">32sp</dimen>
+    <dimen name="textsize_total">48sp</dimen>
     <dimen name="textsize_currency">82sp</dimen>
 
     <dimen name="material_button_height">64dp</dimen>

@@ -16,7 +16,9 @@ import com.henrypra.owey.feature.main.MainFragment
 import com.henrypra.owey.feature.main.MainPresenter
 import com.henrypra.owey.room.AppDatabase
 import com.henrypra.owey.utility.FragmentNavigation
+import com.henrypra.owey.views.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : BaseActivity(),
         MainActionListener,
@@ -54,6 +56,24 @@ class MainActivity : BaseActivity(),
         pager?.adapter = adapter
 
         pager?.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
+
+        pager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            }
+
+            override fun onPageSelected(position: Int) {
+                lateinit var appTitle: String
+                when (position) {
+                    0 -> appTitle = getString(R.string.app_name) + getString(R.string.tab_home)
+                    1 -> appTitle = getString(R.string.app_name) + getString(R.string.tab_debts)
+                    2 -> appTitle = getString(R.string.app_name) + getString(R.string.tab_loans)
+                }
+                tv_app_title?.text = appTitle
+            }
+        })
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(pager))
     }
 
