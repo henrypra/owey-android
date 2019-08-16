@@ -12,23 +12,26 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextStyle.Header"
+            style="@style/HeadlineStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/half_padding"
             android:layout_marginTop="@dimen/half_padding"
+            android:layout_marginEnd="@dimen/half_padding"
             android:gravity="center_horizontal"
+            android:maxLines="1"
             android:text="@string/dashboard_total"
-            android:textSize="@dimen/textsize_title" />
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/tv_total"
-            style="@style/TextStyle.Header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/quarter_padding"
-            android:gravity="center_horizontal"
-            android:textColor="@color/light_green"
-            android:textSize="@dimen/textsize_xlarge" />
+            android:layout_marginStart="@dimen/half_padding"
+            android:layout_marginTop="@dimen/divider_line"
+            android:layout_marginEnd="@dimen/half_padding"
+            android:textAlignment="center"
+            android:textSize="@dimen/textsize_medium" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,39 +41,15 @@
 
             <LinearLayout
                 android:id="@+id/chart_container"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/default_padding"
-                android:layout_marginTop="@dimen/half_padding"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginBottom="@dimen/quarter_padding"
+                android:gravity="center"
                 android:orientation="vertical" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_loans"
-                    style="@style/TextStyle.Header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_padding"
-                    android:textColor="@color/light_green" />
-
-                <TextView
-                    android:id="@+id/tv_debts"
-                    style="@style/TextStyle.Header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_padding"
-                    android:layout_marginTop="@dimen/default_padding"
-                    android:textColor="@color/amber" />
-            </LinearLayout>
-
         </LinearLayout>
+
+        <View style="@style/DividerHorizontalStyle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_debt_main"

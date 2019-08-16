@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">owey!</string>
 
+
     <!--Creation-->
     <string name="loan_uppercase">LOAN</string>
     <string name="debt_uppercase">DEBT</string>
@@ -18,8 +19,13 @@
     <string name="understood">Okay</string>
     <string name="option_edit">Edit debt</string>
     <string name="option_delete">Delete debt</string>
-    <string name="dashboard_total">Total:</string>
+    <string name="dashboard_total">Total debts/loans</string>
     <string name="dashboard_loans">Loans:&#160;</string>
     <string name="dashboard_debts">Debts:&#160;</string>
+
+    <string name="tab_home">&#160;Home</string>
+    <string name="tab_debts">&#160;Debts</string>
+    <string name="tab_loans">&#160;Loans</string>
+
 
 </resources>

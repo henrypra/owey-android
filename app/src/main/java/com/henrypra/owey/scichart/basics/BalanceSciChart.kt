@@ -22,9 +22,7 @@ object BalanceSciChart {
                   debtList: List<Debt>) {
 
         val builder = SciChartUtility.setupDonutSciChart(context, container, surface)
-
         val pieSegmentList = mutableListOf<PieSegment>()
-
 
         val allDebts: Double = debtList.filter { it.isDebt == true }.sumByDouble { it.amount!! }
         val allLoans: Double = debtList.filter { it.isDebt == false }.sumByDouble { it.amount!! }
@@ -36,7 +34,7 @@ object BalanceSciChart {
                 .withValue(allDebts)
                 .withTitleStyle(style)
                 .withTitle("")
-                .withFillColor(ContextCompat.getColor(context, R.color.amber))
+                .withFillColor(ContextCompat.getColor(context, R.color.orange))
                 .build()
 
         val segmentLoan = builder.newPieSegment()

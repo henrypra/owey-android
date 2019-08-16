@@ -26,7 +26,7 @@
                 android:id="@+id/tv_app_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="owey! Home"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
 
@@ -61,13 +61,6 @@
                 android:layout_height="wrap_content"
                 android:icon="@drawable/ic_thumb_up" />
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tab_recent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@drawable/ic_history"
-                android:scaleType="center" />
-
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -96,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"
         android:layout_margin="@dimen/default_padding"
-        android:backgroundTint="@color/amber"
+        android:backgroundTint="@color/main"
         app:srcCompat="@drawable/ic_fab" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.henrypra.owey.R
@@ -29,12 +28,8 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        initOnCLickListeners()
         refresh_container?.setOnRefreshListener(this)
         presenter?.retrieveDebtFromDatabase()
-    }
-
-    private fun initOnCLickListeners() {
     }
 
     override fun onResume() {
@@ -72,15 +67,10 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
         val total = allLoans - allDebts
 
         if (total > 0) {
-            tv_total?.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.light_green) })
-            tv_total?.text = "+${total.toString()}€"
+            tv_total?.text = "Balance: ${total.toString()}€"
         } else {
-            tv_total?.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.amber) })
-            tv_total?.text = "${total.toString()}€"
+            tv_total?.text = "Balance: ${total.toString()}€"
         }
-
-        tv_loans?.text = getString(R.string.dashboard_loans) + allLoans.toString() + "€"
-        tv_debts?.text = getString(R.string.dashboard_debts) + allDebts.toString() + "€"
     }
 
     private fun initRecyclerView() {

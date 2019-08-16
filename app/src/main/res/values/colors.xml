@@ -2,7 +2,7 @@
 <resources>
     <color name="color_primary">#2095f2</color>
     <color name="color_primary_dark">#02a8f3</color>
-    <color name="color_accent">#bfbfbf</color>
+    <color name="color_accent">@color/white</color>
 
     <!--Material colors-->
     <color name="main">#2095f2</color>
@@ -13,6 +13,7 @@
     <color name="orange">#FE9700</color>
     <color name="blue_gray">#5f7c8a</color>
 
+    <color name="divider_color">#AEAEAE</color>
     <color name="main_menu_card_bg">#F8F9FA</color>
 
     <!-- grayscale -->
