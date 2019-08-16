@@ -5,6 +5,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.henrypra.owey.architecture.ToolbarParams
+import com.henrypra.owey.scichart.basics.SciChartUtility
 import kotlinx.android.synthetic.main.default_toolbar.*
 import timber.log.Timber
 
@@ -13,6 +14,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Timber.plant(Timber.DebugTree())
+        SciChartUtility.setSciChartLicense()
     }
 
     override fun onDestroy() {

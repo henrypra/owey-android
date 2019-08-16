@@ -9,12 +9,15 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.henrypra.owey.R
 import com.henrypra.owey.architecture.BaseContractFragment
 import com.henrypra.owey.model.Debt
+import com.henrypra.owey.scichart.basics.BalanceSciChart
+import com.scichart.charting.visuals.SciPieChartSurface
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener,  MainAdapter.DebtClickListener {
+class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContract.View, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, MainAdapter.DebtClickListener {
+    private val SURFACE_TAG = "SURFACE_TAG"
     private val adapter: MainAdapter by lazy { MainAdapter(getCurrentContext(), this) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,6 +43,15 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
 
     override fun displayDebtList(debtList: List<Debt>) {
         GlobalScope.launch(Dispatchers.Main) {
+            val sciChartSurface = SciPieChartSurface(activity)
+            sciChartSurface.tag = SURFACE_TAG
+            activity?.let {
+                BalanceSciChart.initChart(it,
+                        chart_container,
+                        sciChartSurface,
+                        debtList)
+            }
+
             adapter.debtList = debtList.toMutableList()
             adapter.notifyDataSetChanged()
             refresh_container?.isRefreshing = false
