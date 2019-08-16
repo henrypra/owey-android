@@ -18,5 +18,8 @@
     <string name="understood">Okay</string>
     <string name="option_edit">Edit debt</string>
     <string name="option_delete">Delete debt</string>
+    <string name="dashboard_total">Total:</string>
+    <string name="dashboard_loans">Loans:&#160;</string>
+    <string name="dashboard_debts">Debts:&#160;</string>
 
 </resources>

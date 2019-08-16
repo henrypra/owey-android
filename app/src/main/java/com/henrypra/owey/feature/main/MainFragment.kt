@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.henrypra.owey.R
@@ -43,6 +44,7 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
 
     override fun displayDebtList(debtList: List<Debt>) {
         GlobalScope.launch(Dispatchers.Main) {
+            initChartValues(debtList)
             val sciChartSurface = SciPieChartSurface(activity)
             sciChartSurface.tag = SURFACE_TAG
             activity?.let {
@@ -56,6 +58,29 @@ class MainFragment : BaseContractFragment<MainContract.Presenter>(), MainContrac
             adapter.notifyDataSetChanged()
             refresh_container?.isRefreshing = false
         }
+    }
+
+    private fun initChartValues(debtList: List<Debt>) {
+        if (debtList.isNullOrEmpty()) {
+            data_container?.visibility = View.GONE
+        } else {
+            data_container?.visibility = View.VISIBLE
+        }
+
+        val allLoans: Double = debtList.filter { it.isDebt == false }.sumByDouble { it.amount!! }
+        val allDebts: Double = debtList.filter { it.isDebt == true }.sumByDouble { it.amount!! }
+        val total = allLoans - allDebts
+
+        if (total > 0) {
+            tv_total?.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.light_green) })
+            tv_total?.text = "+${total.toString()}€"
+        } else {
+            tv_total?.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.amber) })
+            tv_total?.text = "${total.toString()}€"
+        }
+
+        tv_loans?.text = getString(R.string.dashboard_loans) + allLoans.toString() + "€"
+        tv_debts?.text = getString(R.string.dashboard_debts) + allDebts.toString() + "€"
     }
 
     private fun initRecyclerView() {
